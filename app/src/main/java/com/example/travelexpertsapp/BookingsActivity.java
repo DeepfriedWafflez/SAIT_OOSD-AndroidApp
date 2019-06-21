@@ -27,6 +27,7 @@ public class BookingsActivity extends AppCompatActivity {
      *Date: June 20 2019
      */
     ListView lvBookings;
+
     StringBuffer buffer = new StringBuffer();
 
     @Override

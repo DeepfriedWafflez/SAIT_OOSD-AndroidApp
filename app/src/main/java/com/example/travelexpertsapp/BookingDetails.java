@@ -22,6 +22,18 @@ public class BookingDetails {
 
     public BookingDetails() {}
 
+    public BookingDetails(int bookingDetailId, int itineraryNo, Date tripStart,
+                          Date tripEnd, String description, String destination, double basePrice, String regionId) {
+        BookingDetailId = bookingDetailId;
+        ItineraryNo = itineraryNo;
+        TripStart = tripStart;
+        TripEnd = tripEnd;
+        Description = description;
+        Destination = destination;
+        BasePrice = basePrice;
+        RegionId = regionId;
+    }
+
     //getters
     public int getBookingDetailId() { return BookingDetailId; }
     public int getItineraryNo() { return ItineraryNo; }
