@@ -27,14 +27,14 @@ public class EditAccountActivity extends AppCompatActivity {
 
     Button btnUpdate, btnDelete;
     Customer customer;
-    CustomerDataSource source;
+   // CustomerDataSource source;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_account);
 
-        etCustomerId = findViewById(R.id.etCustomerId);
+ /*       etCustomerId = findViewById(R.id.etCustomerId);
         etCustFirstName = findViewById(R.id.etCustFirstName);
         etCustLastName = findViewById(R.id.etCustLastName);
         etCustAddress = findViewById(R.id.etCustAddress);
@@ -47,10 +47,10 @@ public class EditAccountActivity extends AppCompatActivity {
         etCustEmail = findViewById(R.id.etCustEmail);
         etAgentId = findViewById(R.id.etAgentId);
         etCustUsername = findViewById(R.id.etCustUsername);
-        etCustPassword = findViewById(R.id.etCustPassword);
+        etCustPassword = findViewById(R.id.etCustPassword);*/
 
         customer = (Customer) getIntent().getSerializableExtra("customer");
-        etCustomerId.setText(customer.getCustId() + "");
+        etCustomerId.setText(customer.getCustomerId() + "");
         etCustFirstName.setText(customer.getCustFirstName());
         etCustLastName.setText(customer.getCustLastName());
         etCustAddress.setText(customer.getCustAddress());
@@ -67,7 +67,7 @@ public class EditAccountActivity extends AppCompatActivity {
 
 
 
-        source = new CustomerDataSource(this);
+        //source = new CustomerDataSource(this);
     }
 }
 
