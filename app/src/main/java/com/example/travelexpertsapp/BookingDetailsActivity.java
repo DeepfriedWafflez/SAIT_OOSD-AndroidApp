@@ -76,7 +76,7 @@ public class BookingDetailsActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                URL url = new URL("http://10.163.112.39:8080/Team3-JSPWebService/rest/bookings/getbookingdetails/" + selectedBooking.BookingNo());
+                URL url = new URL("http://10.163.112.39:8080/Team3-JSPWebService/rest/bookings/getbookingdetails/" + selectedBooking.getBookingId());
                 BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
                 String json;
                 while((json = br.readLine()) != null) buffer.append(json);
