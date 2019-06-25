@@ -36,7 +36,6 @@ public class BookingDetailsActivity extends AppCompatActivity {
 
     StringBuffer buffer = new StringBuffer();
     Booking selectedBooking;
-    BookingDetails details;
 
 
     @Override
@@ -44,6 +43,14 @@ public class BookingDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_details);
 
+        //grabs the intent (session)
+        selectedBooking = (Booking) getIntent().getSerializableExtra("booking");
+
+        new GetBookingDetails().execute();
+
+    }
+
+    private void fillTextFields(BookingDetails savedDetails){
         //linking objects
         txtItineraryNo = findViewById(R.id.txtItineraryNo);
         txtTripStart = findViewById(R.id.txtTripStart);
@@ -54,20 +61,15 @@ public class BookingDetailsActivity extends AppCompatActivity {
         txtBasePrice = findViewById(R.id.txtBasePrice);
         txtTotalCost = findViewById(R.id.txtTotalCost);
 
-        //grabs the intent (session)
-        selectedBooking = (Booking) getIntent().getSerializableExtra("booking");
-
-        new GetBookingDetails().execute();
-
         //fills the text fields
-        txtItineraryNo.setText(details.getItineraryNo());
-        txtTripStart.setText(details.getTripStart().toString());
-        txtTripEnd.setText(details.getTripEnd().toString());
-        txtDescription.setText(details.getDescription());
-        txtDestination.setText(details.getDestination());
-        txtRegionId.setText(details.getRegionId());
-        txtBasePrice.setText(Double.toString(details.getBasePrice()));
-        double totalCost = selectedBooking.TravelerCount() * details.getBasePrice();
+        txtItineraryNo.setText(Integer.toString(savedDetails.getItineraryNo()));
+        txtTripStart.setText(savedDetails.getTripStart().toString());
+        txtTripEnd.setText(savedDetails.getTripEnd().toString());
+        txtDescription.setText(savedDetails.getDescription());
+        txtDestination.setText(savedDetails.getDestination());
+        txtRegionId.setText(savedDetails.getRegionId());
+        txtBasePrice.setText(Double.toString(savedDetails.getBasePrice()));
+        double totalCost = selectedBooking.TravelerCount() * savedDetails.getBasePrice();
         txtTotalCost.setText(Double.toString(totalCost));
     }
 
@@ -76,7 +78,7 @@ public class BookingDetailsActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                URL url = new URL("http://10.163.112.39:8080/Team3-JSPWebService/rest/bookings/getbookingdetails/" + selectedBooking.getBookingId());
+                URL url = new URL("http://10.163.112.6:8080/Team3-JSPWebService/rest/bookings/getbookingdetails/" + selectedBooking.getBookingId());
                 BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
                 String json;
                 while((json = br.readLine()) != null) buffer.append(json);
@@ -89,12 +91,14 @@ public class BookingDetailsActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             try {
-                JSONObject bd = new JSONObject(buffer.toString());
+                JSONArray bdarray = new JSONArray(buffer.toString());
+                JSONObject bd = bdarray.getJSONObject(0);
                 Date startDate = new Date(bd.getString("tripStart"));
                 Date endDate = new Date(bd.getString("tripEnd"));
-                details = new BookingDetails(bd.getInt("bookingDetailsId"), bd.getInt("itineraryNo"), startDate,
+                BookingDetails details = new BookingDetails(bd.getInt("bookingDetailId"), bd.getInt("itineraryNo"), startDate,
                         endDate ,bd.getString("description"), bd.getString("destination"),
                         bd.getDouble("basePrice"), bd.getString("regionId"));
+                fillTextFields(details);
             } catch (JSONException e) { e.printStackTrace(); }
         }
     }

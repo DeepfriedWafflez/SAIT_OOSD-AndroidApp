@@ -35,4 +35,10 @@ public class Booking implements Serializable {
     public String TripTypeId() { return TripTypeId; }
 
     //dont need setters, its only a fetching display.
+
+
+    @Override
+    public String toString() {
+        return BookingNo;
+    }
 }
