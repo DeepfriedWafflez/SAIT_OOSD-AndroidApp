@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtPassword;
     Button btnLogin;
 
-    String ipAddress = "192.168.1.66";
+    String ipAddress = "10.163.112.248";
 
     StringBuffer buffer = new StringBuffer();
 
@@ -65,7 +65,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         loggedIn = true;
 
-                        if(loggedIn){
+                        if(loggedIn)
+                        {
                             Intent intent = new Intent(getApplicationContext(), MyAccountActivity.class);
                             intent.putExtra("custId", custId);
                             startActivity(intent);
