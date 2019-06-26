@@ -27,7 +27,7 @@ public class MyAccountActivity extends AppCompatActivity {
     Button btnEdit, btnBookings;
 
     Customer customer;
-    int testid = 143;
+    int testid = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
