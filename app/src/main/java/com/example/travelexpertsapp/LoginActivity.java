@@ -48,8 +48,6 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                //INSERT WEB SERVICE LOGIN CODE HERE - SET loggedIn as TRUE
-
                 String username = txtUsername.getText().toString();
                 String password = txtPassword.getText().toString();
 
