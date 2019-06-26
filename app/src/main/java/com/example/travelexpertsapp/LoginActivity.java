@@ -28,14 +28,13 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtPassword;
     Button btnLogin;
 
-    String ipAddress = "10.163.112.248";
+    String ipAddress = "10.163.112.5";
 
     StringBuffer buffer = new StringBuffer();
 
     boolean loggedIn = false;
-    // int custId = 143;
-
-    int custId = 0;
+     //int custId = 143;
+     int custId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,10 +89,8 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(LoginActivity.this, "Error! Please try again!", Toast.LENGTH_SHORT).show();
                     }
-
                 }
-
-            }
+            };
         });
     }
 
@@ -202,5 +199,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
-
 }
