@@ -28,13 +28,18 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtPassword;
     Button btnLogin;
 
-    String ipAddress = "10.163.112.5";
+    String ipAddress = "10.187.206.248";
 
     StringBuffer buffer = new StringBuffer();
 
     boolean loggedIn = false;
-     //int custId = 143;
-     int custId = 0;
+
+    //int custId = 143;
+
+    // Integer custId = null;
+
+    int custId = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,20 +65,6 @@ public class LoginActivity extends AppCompatActivity {
                                 password);
 
                     new LoginCustomer().execute(customer);
-
-                    if (custId != 0){
-
-                        loggedIn = true;
-
-                        if(loggedIn)
-                        {
-                            Intent intent = new Intent(getApplicationContext(), MyAccountActivity.class);
-                            intent.putExtra("custId", custId);
-                            startActivity(intent);
-                        }
-                    } else {
-                        Toast.makeText(LoginActivity.this, "User not found", Toast.LENGTH_SHORT).show();
-                    }
 
                 } else {
 
@@ -120,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json");
 
-                conn.setDoInput(false);
+                conn.setDoInput(true);
                 conn.setDoOutput(true);
 
                 bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
@@ -171,9 +162,11 @@ public class LoginActivity extends AppCompatActivity {
             super.onPostExecute(s);
 
             try {
-                JSONArray custArray = new JSONArray(buffer.toString());
+//                JSONArray custArray = new JSONArray(buffer.toString());
 
-                JSONObject cust = custArray.getJSONObject(0);
+                JSONObject cust = new JSONObject(buffer.toString());
+
+//                JSONObject cust = custArray.getJSONObject(0);
 
                 Customer customer = new Customer(
                         cust.getInt("customerId"),
@@ -192,10 +185,24 @@ public class LoginActivity extends AppCompatActivity {
                         cust.getString("custPassword")
                 );
 
-                custId = getCustId(customer);
+                custId = customer.getCustomerId();
 
             } catch (JSONException e) {
                 e.printStackTrace();
+            }
+
+            if (custId != 0){
+
+                loggedIn = true;
+
+                if(loggedIn)
+                {
+                    Intent intent = new Intent(getApplicationContext(), MyAccountActivity.class);
+                    intent.putExtra("custId", custId);
+                    startActivity(intent);
+                }
+            } else {
+                Toast.makeText(LoginActivity.this, "User not found", Toast.LENGTH_SHORT).show();
             }
         }
     }
