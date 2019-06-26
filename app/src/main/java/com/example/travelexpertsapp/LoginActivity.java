@@ -89,7 +89,8 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(LoginActivity.this, "Error! Please try again!", Toast.LENGTH_SHORT).show();
                     }
-            }
+                }
+            };
         });
     }
 
