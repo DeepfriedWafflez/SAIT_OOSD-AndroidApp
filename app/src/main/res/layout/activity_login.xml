@@ -55,8 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Enter username" />
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -85,8 +84,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:password="true"
-            android:text="Enter password" />
+            android:password="true" />
     </LinearLayout>
 
     <TextView
