@@ -34,6 +34,9 @@ public class MyAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
 
+        Intent intent = getIntent();
+        testid = intent.getIntExtra("custId", 0);
+
 
         etCustomerId = findViewById(R.id.etCustomerId);
         etCustFirstName = findViewById(R.id.etCustFirstName);

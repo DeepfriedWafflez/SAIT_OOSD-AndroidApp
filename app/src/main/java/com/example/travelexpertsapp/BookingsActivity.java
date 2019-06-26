@@ -27,6 +27,7 @@ public class BookingsActivity extends AppCompatActivity {
      *Date: June 20 2019
      */
     ListView lvBookings;
+    String ipAddress = "10.163.112.140";
 
     StringBuffer buffer = new StringBuffer();
 
@@ -53,7 +54,7 @@ public class BookingsActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                URL url = new URL("http://10.163.112.6:8080/Team3-JSPWebService/rest/bookings/getbookings/" + 143);
+                URL url = new URL("http://" + ipAddress + ":8080/Team3-JSPWebService/rest/bookings/getbookings/" + 143);
                 BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
                 String json;
                 while((json = br.readLine()) != null) buffer.append(json);
