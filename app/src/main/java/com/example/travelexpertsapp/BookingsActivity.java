@@ -38,6 +38,8 @@ public class BookingsActivity extends AppCompatActivity {
 
         lvBookings = findViewById(R.id.lvBookings);
 
+
+
         new GetBookings().execute();
 
         lvBookings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,11 +52,13 @@ public class BookingsActivity extends AppCompatActivity {
     }
 
     class GetBookings extends AsyncTask<Void, Void, Void> {
+        Intent intent = getIntent();
+        int testid = intent.getIntExtra("custId", 0);
 
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                URL url = new URL("http://" + ipAddress + ":8080/Team3-JSPWebService/rest/bookings/getbookings/" + 148);
+                URL url = new URL("http://" + ipAddress + ":8080/Team3-JSPWebService/rest/bookings/getbookings/" + testid);
                 BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
                 String json;
                 while((json = br.readLine()) != null) buffer.append(json);
