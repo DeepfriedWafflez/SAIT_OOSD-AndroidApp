@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     boolean loggedIn = false;
     // int custId = 143;
-    
+
     int custId = 0;
 
     @Override
