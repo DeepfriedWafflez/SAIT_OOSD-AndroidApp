@@ -36,8 +36,6 @@ public class LoginActivity extends AppCompatActivity {
 
     //int custId = 143;
 
-    // Integer custId = null;
-
     int custId = 0;
 
 
@@ -162,11 +160,8 @@ public class LoginActivity extends AppCompatActivity {
             super.onPostExecute(s);
 
             try {
-//                JSONArray custArray = new JSONArray(buffer.toString());
 
                 JSONObject cust = new JSONObject(buffer.toString());
-
-//                JSONObject cust = custArray.getJSONObject(0);
 
                 Customer customer = new Customer(
                         cust.getInt("customerId"),
