@@ -20,7 +20,9 @@ public class Customer implements Serializable {
     private String CustPassword;
 
     //constructor
-    public Customer(int customerId, String custFirstName, String custLastName, String custAddress, String custCity, String custProv, String custPostal, String custCountry, String custHomePhone, String custBusPhone, String custEmail, int agentId, String custUsername, String custPassword) {
+    public Customer(int customerId, String custFirstName, String custLastName, String custAddress,
+                    String custCity, String custProv, String custPostal, String custCountry, String custHomePhone,
+                    String custBusPhone, String custEmail, int agentId, String custUsername, String custPassword) {
         CustomerId = customerId;
         CustFirstName = custFirstName;
         CustLastName = custLastName;
@@ -147,5 +149,10 @@ public class Customer implements Serializable {
 
     public void setCustPassword(String custPassword) {
         CustPassword = custPassword;
+    }
+
+    @Override
+    public String toString() {
+        return CustFirstName + " " + CustLastName ;
     }
 }
