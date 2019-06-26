@@ -28,13 +28,13 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtPassword;
     Button btnLogin;
 
-    String ipAddress = "192.168.1.66";
+    String ipAddress = "10.163.112.5";
 
     StringBuffer buffer = new StringBuffer();
 
     boolean loggedIn = false;
-    // int custId = 143;
-    int custId = 0;
+     int custId = 143;
+//    int custId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,45 +53,47 @@ public class LoginActivity extends AppCompatActivity {
                 String username = txtUsername.getText().toString();
                 String password = txtPassword.getText().toString();
 
-                if(custValidate.isValidString(username) &&
-                        custValidate.isValidString(password)){
+                loggedIn = true;
 
-                    CustomerLogin customer = new CustomerLogin(
-                            0,
-                                username,
-                                password);
-
-                    new LoginCustomer().execute(customer);
-
-                    if (custId != 0){
-
-                        loggedIn = true;
-
-                        if(loggedIn){
-                            Intent intent = new Intent(getApplicationContext(), MyAccountActivity.class);
-                            intent.putExtra("custId", custId);
-                            startActivity(intent);
-                        }
-                    } else {
-                        Toast.makeText(LoginActivity.this, "User not found", Toast.LENGTH_SHORT).show();
-                    }
-
-                } else {
-
-                    if(custValidate.fieldError.size() != 0) {
-
-                        if (username.trim().isEmpty()) {
-                            Toast.makeText(LoginActivity.this, custValidate.fieldError.get(username), Toast.LENGTH_SHORT).show();
-                        }
-
-                        if (password.trim().isEmpty()) {
-                            Toast.makeText(LoginActivity.this, custValidate.fieldError.get(password), Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Error! Please try again!", Toast.LENGTH_SHORT).show();
-                    }
-
+                if(loggedIn){
+                    Intent intent = new Intent(getApplicationContext(), MyAccountActivity.class);
+                    intent.putExtra("custId", custId);
+                    startActivity(intent);
                 }
+
+//                if(custValidate.isValidString(username) &&
+//                        custValidate.isValidString(password)){
+//
+//                    CustomerLogin customer = new CustomerLogin(
+//                            0,
+//                                username,
+//                                password);
+
+//                    new LoginCustomer().execute(customer);
+
+//                    if (custId != 0){
+
+
+//                    } else {
+//                        Toast.makeText(LoginActivity.this, "User not found", Toast.LENGTH_SHORT).show();
+//                    }
+
+//                } else {
+//
+//                    if(custValidate.fieldError.size() != 0) {
+//
+//                        if (username.trim().isEmpty()) {
+//                            Toast.makeText(LoginActivity.this, custValidate.fieldError.get(username), Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                        if (password.trim().isEmpty()) {
+//                            Toast.makeText(LoginActivity.this, custValidate.fieldError.get(password), Toast.LENGTH_SHORT).show();
+//                        }
+//                    } else {
+//                        Toast.makeText(LoginActivity.this, "Error! Please try again!", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                }
 
             }
         });
