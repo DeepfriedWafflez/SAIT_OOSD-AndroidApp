@@ -6,7 +6,7 @@ public class CustomerLogin implements Serializable {
     /*
      * Author: Ibraheem Kolawole
      * Purpose: Customer Login object to hold login data for a specified Customer
-     * Date: June 20 2019
+     * Date: June 25 2019
      */
     private int customerId;
 

@@ -22,6 +22,13 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
+/**
+    Author: Ibraheem Kolawole
+    Purpose: Login Activity communication with REST API/Service
+    Date: 26/06/2019
+**/
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText txtUsername;
