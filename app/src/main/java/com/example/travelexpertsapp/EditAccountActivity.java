@@ -24,7 +24,7 @@ import java.net.URL;
 
 public class EditAccountActivity extends AppCompatActivity {
 
-    String ipAddress = "10.163.112.140";
+    String ipAddress = "10.163.112.20";
     EditText etCustomerId,
             etCustFirstName,
             etCustLastName,

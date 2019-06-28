@@ -27,7 +27,7 @@ public class BookingsActivity extends AppCompatActivity {
      *Date: June 20 2019
      */
     ListView lvBookings;
-    String ipAddress = "10.163.112.140";
+    String ipAddress = "10.163.112.20";
 
     StringBuffer buffer = new StringBuffer();
 
