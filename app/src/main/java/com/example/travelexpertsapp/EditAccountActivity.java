@@ -20,7 +20,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+// author:  Linda Wallace
+// purpose: activity to update customer profile using REST Service
 
 public class EditAccountActivity extends AppCompatActivity {
 
