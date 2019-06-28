@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
 
     //String ipAddress = "10.187.206.248";
-    String ipAddress = "10.163.112.140";
+    String ipAddress = "10.163.112.20";
 
 
 

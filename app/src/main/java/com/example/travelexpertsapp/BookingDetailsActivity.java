@@ -23,7 +23,7 @@ public class BookingDetailsActivity extends AppCompatActivity {
      * Module: CRPG 207-OSD
      *Date: June 20 2019
      */
-    String ipAddress = "10.163.112.140";
+    String ipAddress = "10.163.112.20";
     //properties
     TextView txtItineraryNo;
     TextView txtTripStart;
